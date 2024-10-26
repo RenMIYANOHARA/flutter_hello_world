@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         // アプリのテーマカラーを設定
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         // useMaterial3 : Googleが提供する最新のデザインスタイル
         useMaterial3: true,
       ),
@@ -50,10 +50,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // 現在のテーマの「逆のプライマリーカラー」を取得
+        // HomePageの背景色を定義
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           // 要素の配置位置を縦方向の中央に配置
@@ -62,19 +63,55 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'Count : $_counter',
               // アプリのテーマで定義された「中サイズの見出しスタイル」を適用
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                color: Colors.white, // ここで色を指定
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        // onPressed : ボタンを押下した際のイベント
-        onPressed: () => _incrementCounter(1),
-        // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
-        tooltip: 'Increment',
-        // ボタンオブジェクト内に表示させるテキスト
-        child: const Text('+1'),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        // child    : Widget単体
+        // children : Widget配列
+        children: <Widget>[
+          FloatingActionButton(
+            // onPressed : ボタンを押下した際のイベント
+            onPressed: () => _incrementCounter(-2),
+            // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
+            tooltip: 'Increment',
+            // ボタンオブジェクト内に表示させるテキスト
+            child: const Text('-2'),
+          ),
+          const SizedBox(width: 10), // ボタン間の間隔
+          FloatingActionButton(
+            // onPressed : ボタンを押下した際のイベント
+            onPressed: () => _incrementCounter(-1),
+            // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
+            tooltip: 'Increment',
+            // ボタンオブジェクト内に表示させるテキスト
+            child: const Text('-1'),
+          ),
+          const SizedBox(width: 10), // ボタン間の間隔
+          FloatingActionButton(
+            // onPressed : ボタンを押下した際のイベント
+            onPressed: () => _incrementCounter(1),
+            // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
+            tooltip: 'Increment',
+            // ボタンオブジェクト内に表示させるテキスト
+            child: const Text('+1'),
+          ),
+          const SizedBox(width: 10), // ボタン間の間隔
+          FloatingActionButton(
+            // onPressed : ボタンを押下した際のイベント
+            onPressed: () => _incrementCounter(2),
+            // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
+            tooltip: 'Increment',
+            // ボタンオブジェクト内に表示させるテキスト
+            child: const Text('+2'),
+          ),
+        ],
+      )
     );
   }
 }
