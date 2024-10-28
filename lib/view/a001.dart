@@ -4,14 +4,14 @@ import 'dart:convert';
 import '../Service/api_helper.dart';
 
 // 遷移先の画面 (状態が変わる)
-class SecondPage extends StatefulWidget {
-  const SecondPage({super.key});
+class A001 extends StatefulWidget {
+  const A001({super.key});
 
   @override
-  State<SecondPage> createState() => _SecondPageState();
+  State<A001> createState() => _A001State();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _A001State extends State<A001> {
   int _a = 0;
   int _b = 0;
   int _sum = 0;
@@ -62,7 +62,7 @@ class _SecondPageState extends State<SecondPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Second Page'),
+          title: const Text('A001 Connect to AWS API'),
         ),
         backgroundColor: Colors.black,
         body: Center(

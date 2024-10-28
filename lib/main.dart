@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'Service/api_helper.dart';
-import 'view/a_001.dart';
+import 'view/a001.dart';
+import 'view/a002.dart';
 
 // https://chatgpt.com/share/671cfe56-e934-800c-a558-87b81006d347
 void main() {
@@ -76,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () => {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const SecondPage()),
+                MaterialPageRoute(builder: (context) => const A001()),
               )
             },
             // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
@@ -84,7 +85,23 @@ class _MyHomePageState extends State<MyHomePage> {
             // Heroアニメーションを無効化
             heroTag: null,
             // ボタンオブジェクト内に表示させるテキスト
-            child: const Text('>>'),
+            child: const Text('A001'),
+          ),
+          const SizedBox(width: 5), // ボタン間の間隔
+          FloatingActionButton(
+            // onPressed : ボタンを押下した際のイベント
+            onPressed: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const A002()),
+              )
+            },
+            // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
+            tooltip: 'Go to Calculator Page',
+            // Heroアニメーションを無効化
+            heroTag: null,
+            // ボタンオブジェクト内に表示させるテキスト
+            child: const Text('A002'),
           ),
         ],
       )
