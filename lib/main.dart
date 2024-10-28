@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'Service/api_helper.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'Service/api_helper.dart';
+import 'view/a_001.dart';
 
 // https://chatgpt.com/share/671cfe56-e934-800c-a558-87b81006d347
 void main() {
@@ -40,51 +41,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _a = 0;
-  int _b = 0;
-  int _sum = 0;
-
-  void _incrementA(int increment) async {
-    // ボタンを押下するごとにカウントする関数
-    _a += increment;
-
-    http.Response response;
-    response = await ApiHelper().apiRequest(
-        'post',
-        'https://l6meqb42wf.execute-api.ap-northeast-1.amazonaws.com/develop/main',
-        null,
-        {
-          'key1': _a,
-          'key2': _b,
-        }
-    );
-    final data = json.decode(response.body);
-    setState(() {
-      _a;
-      _sum = data['sum'];
-    });
-  }
-
-  void _incrementB(int increment) async {
-    // ボタンを押下するごとにカウントする関数
-    _b += increment;
-
-    http.Response response;
-    response = await ApiHelper().apiRequest(
-        'post',
-        'https://l6meqb42wf.execute-api.ap-northeast-1.amazonaws.com/develop/main',
-        null,
-        {
-          'key1': _a,
-          'key2': _b,
-        }
-    );
-    final data = json.decode(response.body);
-    setState(() {
-      _b;
-      _sum = data['sum'];
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,21 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'A : $_a',
-              // アプリのテーマで定義された「中サイズの見出しスタイル」を適用
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                color: Colors.white, // ここで色を指定
-              ),
-            ),
-            Text(
-              'B : $_b',
-              // アプリのテーマで定義された「中サイズの見出しスタイル」を適用
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                color: Colors.white, // ここで色を指定
-              ),
-            ),
-            Text(
-              'A + B = $_sum',
+              'Top Page',
               // アプリのテーマで定義された「中サイズの見出しスタイル」を適用
               style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                 color: Colors.white, // ここで色を指定
@@ -131,38 +73,16 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           FloatingActionButton(
             // onPressed : ボタンを押下した際のイベント
-            onPressed: () => _incrementA(-1),
+            onPressed: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SecondPage()),
+              )
+            },
             // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
-            tooltip: 'Increment',
+            tooltip: 'Go to Calculator Page',
             // ボタンオブジェクト内に表示させるテキスト
-            child: const Text('A -1'),
-          ),
-          const SizedBox(width: 5), // ボタン間の間隔
-          FloatingActionButton(
-            // onPressed : ボタンを押下した際のイベント
-            onPressed: () => _incrementA(1),
-            // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
-            tooltip: 'Increment',
-            // ボタンオブジェクト内に表示させるテキスト
-            child: const Text('A +1'),
-          ),
-          const SizedBox(width: 5), // ボタン間の間隔
-          FloatingActionButton(
-            // onPressed : ボタンを押下した際のイベント
-            onPressed: () => _incrementB(-1),
-            // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
-            tooltip: 'Increment',
-            // ボタンオブジェクト内に表示させるテキスト
-            child: const Text('B -1'),
-          ),
-          const SizedBox(width: 5), // ボタン間の間隔
-          FloatingActionButton(
-            // onPressed : ボタンを押下した際のイベント
-            onPressed: () => _incrementB(1),
-            // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
-            tooltip: 'Increment',
-            // ボタンオブジェクト内に表示させるテキスト
-            child: const Text('B +1'),
+            child: const Text('>>'),
           ),
         ],
       )
