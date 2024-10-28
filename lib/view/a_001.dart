@@ -104,6 +104,8 @@ class _SecondPageState extends State<SecondPage> {
               onPressed: () => _incrementA(-1),
               // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
               tooltip: 'Increment',
+              // Heroアニメーションを無効化
+              heroTag: null,
               // ボタンオブジェクト内に表示させるテキスト
               child: const Text('A -1'),
             ),
@@ -113,6 +115,8 @@ class _SecondPageState extends State<SecondPage> {
               onPressed: () => _incrementA(1),
               // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
               tooltip: 'Increment',
+              // Heroアニメーションを無効化
+              heroTag: null,
               // ボタンオブジェクト内に表示させるテキスト
               child: const Text('A +1'),
             ),
@@ -122,6 +126,8 @@ class _SecondPageState extends State<SecondPage> {
               onPressed: () => _incrementB(-1),
               // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
               tooltip: 'Increment',
+              // Heroアニメーションを無効化
+              heroTag: null,
               // ボタンオブジェクト内に表示させるテキスト
               child: const Text('B -1'),
             ),
@@ -131,6 +137,8 @@ class _SecondPageState extends State<SecondPage> {
               onPressed: () => _incrementB(1),
               // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
               tooltip: 'Increment',
+              // Heroアニメーションを無効化
+              heroTag: null,
               // ボタンオブジェクト内に表示させるテキスト
               child: const Text('B +1'),
             ),

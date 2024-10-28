@@ -81,6 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             // tooltip : ボタンを長押し or カーソルを合わせると'Increment'を表示
             tooltip: 'Go to Calculator Page',
+            // Heroアニメーションを無効化
+            heroTag: null,
             // ボタンオブジェクト内に表示させるテキスト
             child: const Text('>>'),
           ),
